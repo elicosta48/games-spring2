@@ -1,30 +1,30 @@
 package application.model;
- 
+
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persintence.Column;
-import jakarta.persintence.Entity;
-import jakarta.persintence.GeneratedValue;
-import jakarta.persintence.GenerateType;
-import jakarta.persintence.Id;
-import jakarta.persintence.OneToMany;
-import Jakarata.persintence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GeneratedType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Taple;
 
 @Entity
-@Table(name: "categorias")
+@Table(name = "categorias")
 public class Categoria {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GeneratedType.IDENTITY)
     private long id;
     @Column(unique = true, nullable = false)
     private String nome;
 
     @OneToMany(mappedBy = "categoria")
-    private Set<jogo> jogos = new HashSet<>();
+    private Set<Jogo> jogos = new HashSet<>();
 
     public long getId() {
-        retun id;
+        return id;
     }
 
     public void setId(long id) {
@@ -36,7 +36,7 @@ public class Categoria {
     }
 
     public void setNome(String nome) {
-        this.nome;
+        this.nome = nome;
     }
 
     public Set<jogo> getJogos() {
