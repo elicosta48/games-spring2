@@ -1,22 +1,25 @@
 package application.model;
-
+import java.lang.annotation.Inherited;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.annotation.processing.Generated;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GeneratedType;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Taple;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "categorias")
 public class Categoria {
     @Id
-    @GeneratedValue(strategy = GeneratedType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(unique = true, nullable = false)
     private String nome;
 
@@ -26,24 +29,24 @@ public class Categoria {
     public long getId() {
         return id;
     }
-
-    public void setId(long id) {
-        this.id = id; 
-    }  
+    
+    public void setId(long id){
+        this.id = id;
+    }
 
     public String getNome() {
-            return nome;
+        return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Set<jogo> getJogos() {
+    public Set<Jogo> getJogos() {
         return jogos;
     }
 
-    public void setJogos(Set<Jogos> jogos) {
+    public void setJogos(Set<Jogo> jogos) {
         this.jogos = jogos;
     }
 }

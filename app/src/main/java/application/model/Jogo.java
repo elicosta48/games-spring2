@@ -1,25 +1,17 @@
 package application.model;
 
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GeneratedType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Many.ToOne;
-import jakarta.persistence.Table;
 
 @Entity
-@Table ( name = "jogos")
-public class jogo {
-    @Id 
-    @GeneratedValue(strategy = GeneratedType.IDENTITY)
-    private lng id;
+@Table(name = "jogos")
+public class Jogo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(nullable = true)
     private String titulo;
 
@@ -30,41 +22,39 @@ public class jogo {
     @ManyToMany
     @JoinTable(
         name = "jogos_possuem_plataformas",
-        JoinColumns = @JoinColumn(name = "id_jogos"),
-        inversrJoinColumns = @JoinColumn( name = "id_plataformas"))
-    private Set<Plataforma> plataformas = new HashSet<>();  
-    
+        joinColumns = @JoinColumn(name = "id_jogos"),
+        inverseJoinColumns = @JoinColumn(name = "id_plataformas")
+    )
+    private Set<Plataforma> plataformas = new HashSet<>();
+
     public long getId() {
         return id;
-    } 
-
-     public  void setId(long id) {
+    }
+    
+    public void setId(long id){
         this.id = id;
     }
-     
+
     public String getTitulo() {
         return titulo;
+
     }
 
-    public void setTitulo(string titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public Categoria getCatogoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
-
-    public void setCatogoria(Categoria categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
     public Set<Plataforma> getPlataformas() {
         return plataformas;
     }
 
-    public void setPlaformas(Set<Plataformas> plataformas) {
+    public void setPlataformas(Set<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
-
-
 }
